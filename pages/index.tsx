@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import axios from "axios";
 import { Video } from "@/types";
+import VideoCard from "@/components/VideoCard";
+import NoResult from "@/components/NoResult";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +18,10 @@ export default function Home({videos}:IVideo) {
       {
         videos?.length > 0 ?(
           videos?.map(video=>(
-            <div>
-              
-            </div>
+            <VideoCard post={video} key={video?._id}/>
           ))
         ) : (
-          <span></span>
+          <NoResult text={"No videos"}/>
         )
       }
     </div>
